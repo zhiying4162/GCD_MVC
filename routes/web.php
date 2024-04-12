@@ -7,8 +7,8 @@
 // });
 
 
-use App\Http\Controllers\IndexController;
+use App\Http\Controllers\BooksController;
 
-Route::get('/', [IndexController::class, 'index'])->name('index');
-Route::get('/calculate', [IndexController::class, 'calculate'])->name('calculate');
-Route::get('/show', [IndexController::class, 'show'])->name('show');
+Route::get('/', [BooksController::class, 'index'])->name('index');
+Route::get('/calculate', [BooksController::class, 'calculate'])->name('calculate');
+Route::get('/show', [BooksController::class, 'show'])->name('show');
