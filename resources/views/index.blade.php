@@ -9,11 +9,11 @@
 <body>
     <form id="form1" name="form1" method="get" action="{{ route('calculate') }}">
         <p>
-            <label for="Number1">幣一個數字：</label>
+            <label for="Number1">第一個數字：</label>
             <input name="Number1" type="text" id="Number1" size="20" maxlength="15" required />
         </p>
         <p>
-            <label for="Number2">幣二個數字：</label>
+            <label for="Number2">第二個數字：</label>
             <input name="Number2" type="text" id="Number2" size="20" maxlength="15"  required/>
         </p>
         <input type="submit" name="button" id="button" value="送出" />

@@ -52,8 +52,21 @@ class BooksController extends Controller
 
     public function calculate(Request $request)
     {
-        $Num1 = $request->$_GET['Number1'];
-        $Num2 = $request->$_GET['Number2'];
+        $Num1 = $request->input('Number1');
+        $Num2 = $request->input('Number2');
+
+        session(['Number1'=>$Num1]);
+
+        session(['Number2'=>$Num2]);
+
+        // session(['Number1'=>$Num1]);
+
+        // if(!session()->has('Number1')){           
+        //     session(['Number1'=>$Num1]);
+        // }
+        // if(!session()->has('Number2')){           
+        //     session(['Number2'=>$Num2]);
+        // }
 
         do {
             $gcd = $Num1 % $Num2;
@@ -61,16 +74,27 @@ class BooksController extends Controller
             $Num2 = $gcd;
         } while ($gcd > 0);
 
-        $request->session()->put('gcd_result', $Num1);
+        $ans = $Num1;
+        session(['ans'=>$ans]);
 
-        return redirect()->route('index');
+        // $request->session()->put('gcd_result', $Num1);
+
+        // return redirect()->route('index');
+        return view('index');
     }
     
     public function show(Request $request)
     {
-        $gcdResult = $request->session()->get('gcd_result');
+        // $gcdResult = $request->session()->get('gcd_result');
 
-        return view('show', ['gcdResult' => $gcdResult]);
+        // return view('index', ['gcdResult' => $gcdResult]);
+
+        $Num1 = session('Number1');
+        $Num2 = session('Number2');
+
+        $ans = session('ans');
+
+        echo "$Num1 和 $Num2 的最大公因數為： $ans";
     }
 }
 
